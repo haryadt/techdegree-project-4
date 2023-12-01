@@ -108,7 +108,6 @@ class Game {
         } else {
             heartElements[this.missed].children[0].src = "images/lostHeart.png";
             this.missed++;
-            console.log(`I lost a live! ${this.missed} / ${heartElements.length}`);
         }
     }
 
