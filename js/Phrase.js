@@ -7,8 +7,12 @@ class Phrase {
         this.phrase = phrase.toLowerCase();
     }
 
+    // Display phrases
     addPhraseToDisplay () {
         const phraseList = document.querySelector("#phrase ul");
+        phraseList.innerHTML = "";
+
+        // Create a list with each ketter of the phrase and append it to the ul element
         for(const letter of this.phrase) {
             const letterElement = document.createElement("li");
             if(letter === " ") {
@@ -24,23 +28,20 @@ class Phrase {
         }
     } 
 
+    // Check if letter matches with the phrase
     checkLetter(letter) {
-        return this.phrase.includes(letter) ? letter: "";
+        return this.phrase.indexOf(letter) > -1;
     };
 
-    showMatchedLetter(letter) {
-        letter.addEventListener("click", (event) => {
-            const keyValue = event.target.textContent;
-            const matchedLetter = this.checkLetter(keyValue);
-            if(matchedLetter) {
-                const letterDisplay = document.querySelectorAll(`.${matchedLetter}`);
-                for(const letterElement of letterDisplay) {
-                    letterElement.classList.remove("hide");
-                    letterElement.classList.add("show");
-                }
-            } else {
-                this.hitPoints -= 1;
+    // Display matched letters
+    showMatchedLetter(key) {
+        const matchedLetter = this.checkLetter(key);
+        if(matchedLetter) {
+            const letterDisplay = document.querySelectorAll(`.${key}`);
+            for(const letterElement of letterDisplay) {
+                letterElement.classList.remove("hide");
+                letterElement.classList.add("show");
             }
-        });
+        }
     }
 }

@@ -3,12 +3,12 @@
  * app.js */
 
 
+let game = null;
+const startGame = document.getElementById("btn__reset");
+const keyButton = document.getElementsByClassName("key");
 
-let game;
-const startGame= document.getElementById("btn__reset");
 startGame.addEventListener("click", () => {
     game = new Game();
     game.startGame();
-    game.handleInteraction();
+    game.handleInteraction(keyButton);
 });
-
