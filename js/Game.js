@@ -74,15 +74,15 @@ class Game {
                         event.target.classList.remove("wrong");
                         event.target.classList.add("chosen");
                         this.activePhrase.showMatchedLetter(selectedLetter);
+                        // Check if player wins
+                        if(this.checkForWin()) {
+                            this.gameOver(true);
+                        }
                     } else {
                         event.target.classList.remove("chosen");
                         event.target.classList.add("wrong");
+                        event.target.disabled = true;
                         this.removeLife();
-                    }
-
-                    // Check if player wins
-                    if(this.checkForWin()) {
-                        this.gameOver(true);
                     }
                 }
             });
